@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gps;
+package gps.nmea;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class NMEAParser {
 
-    void analize(String fileLine) {
+   public void analize(String fileLine) {
         if (fileLine.length() >= 80) {
             System.out.println("Dłuzszy niż 80!");
         } else if (fileLine.length() == 0) {

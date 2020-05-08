@@ -1,5 +1,6 @@
-package gps;
+package gps.nmea;
 
+import gps.UserPosition;
 import java.util.List;
 import java.util.Map;
 

@@ -1,5 +1,6 @@
 package gps;
 
+import gps.nmea.NMEAParser;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
