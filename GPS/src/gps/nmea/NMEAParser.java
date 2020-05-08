@@ -14,41 +14,45 @@ import java.util.Map;
  */
 public class NMEAParser {
 
-   public void analize(String fileLine) {
+    public void analize(String fileLine) {
         if (fileLine.length() >= 80) {
-            System.out.println("Dłuzszy niż 80!");
+            System.out.println("dłuższy niż 80 znaków");
+
         } else if (fileLine.length() == 0) {
-            System.out.println("Pusta linia");
-        } else if (fileLine.length() > 0 && !String.valueOf(fileLine.charAt(0)).equals("$")) {
-            System.out.println("Nie zaczyna sie od $");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPRMC")) {
-            System.out.println("RMC");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPRMB")) {
-            System.out.println("RMB");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPGGA")) {
-            System.out.println("GPGGA");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPGSA")) {
-            System.out.println("GPGSA");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPGSV")) {
-            System.out.println("GPGSV");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPGLL")) {
-            System.out.println("GPGLL");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPBOD")) {
-            System.out.println("GPBOD");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("PGRME")) {
-            System.out.println("PGRME");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("PGRMZ")) {
-            System.out.println("PGRMZ");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("PGRMM")) {
-            System.out.println("PGRMM");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPRTE")) {
-            System.out.println("GPRTE");
-        } else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("HCHDG")) {
-            System.out.println("HCHDG");
-        }  else if (fileLine.length() > 0 && fileLine.substring(1, 6).equals("GPVTG")) {
-            System.out.println("GPVTG");
+            System.out.println();
+
+        } else if (fileLine.length() > 0) {
+            switch (fileLine.substring(1, 6)) {
+                case "GPRMC": {
+                    System.out.println("GPRMC");
+                    break;
+                }
+                case "GPGGA": {
+                    System.out.println("GPGGA");
+                    break;
+                }
+                case "GPGSA": {
+                    System.out.println("GPGSA");
+                    break;
+                }
+                case "GPGSV": {
+                    System.out.println("GPGSV");
+                    break;
+                }
+                case "GPGLL": {
+                    System.out.println("GPGLL");
+                    break;
+                }
+                case "GPVTG": {
+                    System.out.println("GPVTG");
+                    break;
+                }
+                /* default:
+                    System.out.println(fileLine);
+                 */
+            }
         } else {
-            System.out.println(fileLine);
+            System.out.println("Something goes wrong!");
         }
     }
 }
