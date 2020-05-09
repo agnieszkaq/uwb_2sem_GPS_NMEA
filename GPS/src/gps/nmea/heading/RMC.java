@@ -9,6 +9,43 @@ package gps.nmea.heading;
  *
  * @author Admin
  */
-public class RMC {
-    
+public class RMC extends Heading {
+
+    String id, utc, status, latitudeNumber, latitudeDirection,
+            longitudeNumber, longitudeDirection, speed, angile, date,
+            magneticDeviationNumber, magneticDeviationDirection, checksum;
+
+    public RMC() {
+    }
+
+    public RMC(String fileLine) {
+        super(fileLine);
+        setValue();
+    }
+
+    public void setValue() {
+        try {
+            id = splitedArray[0];
+            utc = splitedArray[1];
+            status = splitedArray[2];
+            latitudeNumber = splitedArray[3];
+            latitudeDirection = splitedArray[4];
+            longitudeNumber = splitedArray[5];
+            longitudeDirection = splitedArray[6];
+            speed = splitedArray[7];
+            angile = splitedArray[8];
+            date = splitedArray[9];
+            magneticDeviationNumber = splitedArray[10];
+            magneticDeviationDirection = splitedArray[11];
+            checksum = splitedArray[12];
+
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            System.err.println("ERROR! Index of bounds exception in RMC.class");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "RMC{" + "id=" + id + ", utc=" + utc + ", status=" + status + ", latitudeNumber=" + latitudeNumber + ", latitudeDirection=" + latitudeDirection + ", longitudeNumber=" + longitudeNumber + ", longitudeDirection=" + longitudeDirection + ", speed=" + speed + ", angile=" + angile + ", date=" + date + ", magneticDeviationNumber=" + magneticDeviationNumber + ", magneticDeviationDirection=" + magneticDeviationDirection + ", checksum=" + checksum + '}';
+    }
 }
