@@ -7,6 +7,8 @@ package gps.nmea;
 
 import gps.Satelites;
 import gps.UserPosition;
+import gps.nmea.heading.GGA;
+import gps.nmea.heading.Heading;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,7 @@ public class NMEAParser {
     NMEAModel nmeaModel = new NMEAModel();
 
     public void analize(String fileLine) {
+
         if (fileLine.length() >= 80) {
             System.out.println("dłuższy niż 80 znaków");
 
@@ -28,6 +31,7 @@ public class NMEAParser {
             System.out.println();
 
         } else if (fileLine.length() > 0) {
+
             switch (fileLine.substring(1, 6)) {
                 case "GPRMC": {
                     System.out.println("GPRMC");
@@ -35,6 +39,8 @@ public class NMEAParser {
                 }
                 case "GPGGA": {
                     System.out.println("GPGGA");
+                    GGA gga = new GGA(fileLine);
+                    System.out.println(gga.toString());
                     break;
                 }
                 case "GPGSA": {
