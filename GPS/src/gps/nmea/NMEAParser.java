@@ -5,6 +5,8 @@
  */
 package gps.nmea;
 
+import gps.Satelites;
+import gps.UserPosition;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,10 @@ import java.util.Map;
  * @author Admin
  */
 public class NMEAParser {
+
+    UserPosition userPosition = new UserPosition();
+    Satelites satelites = new Satelites();
+    NMEAModel nmeaModel = new NMEAModel();
 
     public void analize(String fileLine) {
         if (fileLine.length() >= 80) {

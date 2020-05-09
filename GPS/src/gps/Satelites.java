@@ -17,6 +17,9 @@ public class Satelites {
     Map<String, String> visibleSatelites;
     List<String> satelitesOfCurrentPosition;
 
+    public Satelites() {
+    }
+
     public Satelites(Map<String, String> visibleSatelites, List<String> satelitesOfCurrentPosition) {
         this.visibleSatelites = visibleSatelites;
         this.satelitesOfCurrentPosition = satelitesOfCurrentPosition;
