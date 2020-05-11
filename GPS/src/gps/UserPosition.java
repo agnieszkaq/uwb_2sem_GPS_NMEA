@@ -11,39 +11,54 @@ package gps;
  */
 public class UserPosition {
 
-    float longitude, latitude, altitude;
+    String latitudeNumber, latitudeDirection,
+            longitudeNumber, longitudeDirection;
 
     public UserPosition() {
     }
 
-    public UserPosition(float longitude, float latitude, float altitude) {
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.altitude = altitude;
+    public UserPosition(String latitudeNumber, String latitudeDirection, String longitudeNumber, String longitudeDirection) {
+        this.latitudeNumber = latitudeNumber;
+        this.latitudeDirection = latitudeDirection;
+        this.longitudeNumber = longitudeNumber;
+        this.longitudeDirection = longitudeDirection;
     }
 
-    public float getLongitude() {
-        return longitude;
+    @Override
+    public String toString() {
+        return "UserPosition{" + "latitudeNumber=" + latitudeNumber + ", latitudeDirection=" + latitudeDirection + ", longitudeNumber=" + longitudeNumber + ", longitudeDirection=" + longitudeDirection + '}';
     }
 
-    public void setLongitude(float longitude) {
-        this.longitude = longitude;
+    public String getLatitudeNumber() {
+        return latitudeNumber;
     }
 
-    public float getLatitude() {
-        return latitude;
+    public void setLatitudeNumber(String atitudeNumber) {
+        this.latitudeNumber = atitudeNumber;
     }
 
-    public void setLatitude(float latitude) {
-        this.latitude = latitude;
+    public String getLatitudeDirection() {
+        return latitudeDirection;
     }
 
-    public float getAltitude() {
-        return altitude;
+    public void setLatitudeDirection(String latitudeDirection) {
+        this.latitudeDirection = latitudeDirection;
     }
 
-    public void setAltitude(float altitude) {
-        this.altitude = altitude;
+    public String getLongitudeNumber() {
+        return longitudeNumber;
+    }
+
+    public void setLongitudeNumber(String longitudeNumber) {
+        this.longitudeNumber = longitudeNumber;
+    }
+
+    public String getLongitudeDirection() {
+        return longitudeDirection;
+    }
+
+    public void setLongitudeDirection(String longitudeDirection) {
+        this.longitudeDirection = longitudeDirection;
     }
 
 }

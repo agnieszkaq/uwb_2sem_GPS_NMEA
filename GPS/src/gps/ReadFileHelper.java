@@ -23,10 +23,9 @@ public class ReadFileHelper {
 
         reader = new BufferedReader(new FileReader(path));
         String line = reader.readLine();
+        NMEAParser parser = new NMEAParser();
         while (line != null) {
-            NMEAParser parser = new NMEAParser();
             parser.analize(line);
-
             line = reader.readLine();
         }
         reader.close();

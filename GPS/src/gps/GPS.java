@@ -23,5 +23,4 @@ public class GPS {
         ReadFileHelper reader = new ReadFileHelper();
         reader.getLineByLine("src/TextFiles/GPS.txt");
     }
-
 }

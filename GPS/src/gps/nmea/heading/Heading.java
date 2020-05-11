@@ -19,6 +19,7 @@ public class Heading {
 
     public Heading(String fileLine) {
         this.fileLine = fileLine;
+        replaceChar();
         splitArray();
     }
 
@@ -30,8 +31,12 @@ public class Heading {
         this.fileLine = fileLine;
     }
 
+    public void replaceChar() {
+        setFileLine(fileLine.replace("*", ","));
+    }
+
     public void splitArray() {
-        this.splitedArray = this.fileLine.split(",");
+        this.splitedArray = this.fileLine.split(",", -1);
     }
 
     public String[] getSplitedArray() {

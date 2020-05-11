@@ -44,8 +44,42 @@ public class RMC extends Heading {
         }
     }
 
+    public String getLatitudeNumber() {
+        return latitudeNumber;
+    }
+
+    public void setLatitudeNumber(String latitudeNumber) {
+        this.latitudeNumber = latitudeNumber;
+    }
+
+    public String getLatitudeDirection() {
+        return latitudeDirection;
+    }
+
+    public void setLatitudeDirection(String latitudeDirection) {
+        this.latitudeDirection = latitudeDirection;
+    }
+
+    public String getLongitudeNumber() {
+        return longitudeNumber;
+    }
+
+    public void setLongitudeNumber(String longitudeNumber) {
+        this.longitudeNumber = longitudeNumber;
+    }
+
+    public String getLongitudeDirection() {
+        return longitudeDirection;
+    }
+
+    public void setLongitudeDirection(String longitudeDirection) {
+        this.longitudeDirection = longitudeDirection;
+    }
+
+    
     @Override
     public String toString() {
         return "RMC{" + "id=" + id + ", utc=" + utc + ", status=" + status + ", latitudeNumber=" + latitudeNumber + ", latitudeDirection=" + latitudeDirection + ", longitudeNumber=" + longitudeNumber + ", longitudeDirection=" + longitudeDirection + ", speed=" + speed + ", angile=" + angile + ", date=" + date + ", magneticDeviationNumber=" + magneticDeviationNumber + ", magneticDeviationDirection=" + magneticDeviationDirection + ", checksum=" + checksum + '}';
     }
+
 }
