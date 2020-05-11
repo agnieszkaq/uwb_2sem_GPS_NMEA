@@ -14,31 +14,73 @@ import java.util.Map;
  */
 public class Satelites {
 
-    Map<String, String> visibleSatelites;
-    List<String> satelitesOfCurrentPosition;
+    String[] satelitesOfCurrentPosition = new String[12];
+
+    String PRN, elevation, azimuth, SNR;
+
+    public Satelites(String PRN, String elevation, String azimuth, String SNR) {
+        this.PRN = PRN;
+        this.elevation = elevation;
+        this.azimuth = azimuth;
+        this.SNR = SNR;
+    }
 
     public Satelites() {
     }
 
-    public Satelites(Map<String, String> visibleSatelites, List<String> satelitesOfCurrentPosition) {
-        this.visibleSatelites = visibleSatelites;
-        this.satelitesOfCurrentPosition = satelitesOfCurrentPosition;
+    public String getPRN() {
+        return PRN;
     }
 
-    public Map<String, String> getVisibleSatelites() {
-        return visibleSatelites;
+    public void setPRN(String PRN) {
+        this.PRN = PRN;
     }
 
-    public void setVisibleSatelites(Map<String, String> visibleSatelites) {
-        this.visibleSatelites = visibleSatelites;
+    public String getElevation() {
+        return elevation;
     }
 
-    public List<String> getSatelitesOfCurrentPosition() {
+    public void setElevation(String elevation) {
+        this.elevation = elevation;
+    }
+
+    public String getAzimuth() {
+        return azimuth;
+    }
+
+    public void setAzimuth(String azimuth) {
+        this.azimuth = azimuth;
+    }
+
+    public String getSNR() {
+        return SNR;
+    }
+
+    public void setSNR(String SNR) {
+        this.SNR = SNR;
+    }
+
+    public String[] getSatelitesOfCurrentPosition() {
         return satelitesOfCurrentPosition;
     }
 
-    public void setSatelitesOfCurrentPosition(List<String> satelitesOfCurrentPosition) {
+    public void setSatelitesOfCurrentPosition(String[] satelitesOfCurrentPosition) {
         this.satelitesOfCurrentPosition = satelitesOfCurrentPosition;
     }
 
+    public String stringOfCurrentPosition() {
+        String satelite = " SATELITES:";
+        for (int i = 0; i < 12; i++) {
+            if (satelitesOfCurrentPosition[i].isEmpty()) {
+            } else {
+                satelite += " s:" + satelitesOfCurrentPosition[i];
+            }
+        }
+        return "Satelites of current position{" + satelite + '}';
+    }
+
+    @Override
+    public String toString() {
+        return "SATELITES{PRN: " + PRN + ", elevation: " + elevation + ", azimuth: " + azimuth + ", SNR:" + SNR + '}';
+    }
 }
