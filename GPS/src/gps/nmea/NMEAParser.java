@@ -21,90 +21,81 @@ import java.util.List;
  */
 public class NMEAParser {
 
-    UserPosition userPosition = new UserPosition();
-    Satelites satelites = new Satelites();
-    NMEAModel nmeaModel = new NMEAModel();
+	UserPosition userPosition = new UserPosition();
+	Satelites satelites = new Satelites();
+	NMEAModel nmeaModel = new NMEAModel();
 
-    List gvsFileLineList = new ArrayList();
+	List gvsFileLineList = new ArrayList();
 
-    public boolean getFileLineLenght(String fileLine) {
-        return (fileLine.length() >= 80);
-    }
+	public boolean getFileLineLenght(String fileLine) {
+		return (fileLine.length() >= 80);
+	}
 
-    public boolean isFileLenghtZero(String fileLine) {
-        return ((fileLine.length() == 0));
-    }
+	public boolean isFileLenghtZero(String fileLine) {
+		return ((fileLine.length() == 0));
+	}
 
-    public void gsvGenerate(String fileLine) {
-        GSV gsv = new GSV();
-        this.gvsFileLineList.add(fileLine);
-        gsv.setFileLineList(gvsFileLineList);
-        gsv.checkLine();
-    }
+	public void gsvGenerate(String fileLine) {
+		GSV gsv = new GSV();
+		this.gvsFileLineList.add(fileLine);
+		gsv.setFileLineList(gvsFileLineList);
+		gsv.checkLine();
+	}
 
-    public void specyficHeaderGnerator(String fileLine) {
-        switch (fileLine.substring(1, 6)) {
-            case "GPRMC": {
-                RMC rmc = new RMC(fileLine);
-                userPosition.setLatitudeDirection(rmc.getLatitudeDirection());
-                userPosition.setLatitudeNumber(rmc.getLatitudeNumber());
-                userPosition.setLongitudeDirection(rmc.getLongitudeDirection());
-                userPosition.setLongitudeNumber(rmc.getLongitudeNumber());
+	public void specyficHeaderGnerator(String fileLine) {
+		switch (fileLine.substring(1, 6)) {
+		case "GPRMC": {
+			RMC rmc = new RMC(fileLine);
+			userPosition.setAll(rmc.getLatitudeDirection(), rmc.getLatitudeNumber(), rmc.getLongitudeDirection(),
+					rmc.getLongitudeNumber());
 
-                System.out.println(userPosition.toString());
-                break;
-            }
-            case "GPGGA": {
-                GGA gga = new GGA(fileLine);
-                userPosition.setLatitudeDirection(gga.getLatitudeDirection());
-                userPosition.setLatitudeNumber(gga.getLatitudeNumber());
-                userPosition.setLongitudeDirection(gga.getLongitudeDirection());
-                userPosition.setLongitudeNumber(gga.getLongitudeNumber());
+			System.out.println(userPosition.toString());
+			break;
+		}
+		case "GPGGA": {
+			GGA gga = new GGA(fileLine);
+			userPosition.setAll(gga.getLatitudeDirection(), gga.getLatitudeNumber(), gga.getLongitudeDirection(),
+					gga.getLongitudeNumber());
 
-                System.out.println(userPosition.toString());
-                break;
-            }
-            case "GPGSA": {
-                GSA gsa = new GSA(fileLine);
-                gsa.toString();
-                satelites.setSatelitesOfCurrentPosition(gsa.getSatelites());
-                System.out.println(satelites.stringOfCurrentPosition());
-                break;
-            }
-            case "GPGLL": {
-                GLL gll = new GLL(fileLine);
-                userPosition.setLatitudeDirection(gll.getLatitudeDirection());
-                userPosition.setLatitudeNumber(gll.getLatitudeNumber());
-                userPosition.setLongitudeDirection(gll.getLongitudeDirection());
-                userPosition.setLongitudeNumber(gll.getLongitudeNumber());
+			System.out.println(userPosition.toString());
+			break;
+		}
+		case "GPGSA": {
+			GSA gsa = new GSA(fileLine);
+			gsa.toString();
+			satelites.setSatelitesOfCurrentPosition(gsa.getSatelites());
 
-                System.out.println(userPosition.toString());
-                break;
-            }
-            case "GPVTG": {
-                //System.out.println(fileLine);
-                break;
-            }
-        }
-    }
+			System.out.println(satelites.stringOfCurrentPosition());
+			break;
+		}
+		case "GPGLL": {
+			GLL gll = new GLL(fileLine);
+			userPosition.setAll(gll.getLatitudeDirection(), gll.getLatitudeNumber(), gll.getLongitudeDirection(),
+					gll.getLongitudeNumber());
 
-    public void analize(String fileLine) {
-        if (getFileLineLenght(fileLine)) {
-            //System.out.println("Too much chars.");
+			System.out.println(userPosition.toString());
+			break;
+		}
+		}
+	}
 
-        } else if (isFileLenghtZero(fileLine)) {
-            //System.out.println("Lenght is zero.");
+	public void analize(String fileLine) {
+		if (getFileLineLenght(fileLine)) {
+			// System.out.println("Too much chars.");
 
-        } else if (fileLine.length() > 0) {
-            if (fileLine.substring(1, 6).equals("GPGSV")) {
-                gsvGenerate(fileLine);
+		} else if (isFileLenghtZero(fileLine)) {
+			// System.out.println("Lenght is zero.");
 
-            } else {
-                gvsFileLineList.removeAll(gvsFileLineList);
-                specyficHeaderGnerator(fileLine);
-            }
-        } else {
-            System.out.println("Something goes wrong!");
-        }
-    }
+		} else if (fileLine.length() > 0) {
+			if (fileLine.substring(1, 6).equals("GPGSV")) {
+				gsvGenerate(fileLine);
+
+			} else {
+				gvsFileLineList.removeAll(gvsFileLineList);
+				specyficHeaderGnerator(fileLine);
+			}
+		} else {
+			System.out.println("Something goes wrong!");
+		}
+	}
 }

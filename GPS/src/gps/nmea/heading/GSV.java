@@ -52,10 +52,10 @@ public class GSV extends Heading {
         String firstLine = this.fileLineList.get(0).toString();
         this.splitedArray = firstLine.split(",", -1);
 
-        String a = splitedArray[1].toString();
-        String b = Integer.toString(this.fileLineList.size());
+        String numberLineShouldRead1 = splitedArray[1].toString();
+        String numberLineShouldRead2 = Integer.toString(this.fileLineList.size());
 
-        if (a.equals(b)) {
+        if (numberLineShouldRead1.equals(numberLineShouldRead2)) {
             //System.out.println("Accepted");
             generateList(fileLineList);
         } else {
