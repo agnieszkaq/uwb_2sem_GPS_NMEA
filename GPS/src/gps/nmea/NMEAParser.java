@@ -79,7 +79,7 @@ public class NMEAParser {
 		}
 	}
 
-	public void analize(String fileLine) {
+	public void parse(String fileLine) {
 		if (getFileLineLenght(fileLine)) {
 			// System.out.println("Too much chars.");
 
