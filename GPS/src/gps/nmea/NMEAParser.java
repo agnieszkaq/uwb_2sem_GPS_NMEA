@@ -46,16 +46,16 @@ public class NMEAParser {
 		switch (fileLine.substring(1, 6)) {
 		case "GPRMC": {
 			RMC rmc = new RMC(fileLine);
-			userPosition.setAll(rmc.getLatitudeDirection(), rmc.getLatitudeNumber(), rmc.getLongitudeDirection(),
-					rmc.getLongitudeNumber());
+			userPosition.setAll(rmc.getLatitudeNumber(), rmc.getLatitudeDirection(), rmc.getLongitudeNumber(),
+					rmc.getLongitudeDirection());
 
 			System.out.println(userPosition.toString());
 			break;
 		}
 		case "GPGGA": {
 			GGA gga = new GGA(fileLine);
-			userPosition.setAll(gga.getLatitudeDirection(), gga.getLatitudeNumber(), gga.getLongitudeDirection(),
-					gga.getLongitudeNumber());
+			userPosition.setAll(gga.getLatitudeNumber(), gga.getLatitudeDirection(), gga.getLongitudeNumber(),
+					gga.getLongitudeDirection());
 
 			System.out.println(userPosition.toString());
 			break;
@@ -70,8 +70,8 @@ public class NMEAParser {
 		}
 		case "GPGLL": {
 			GLL gll = new GLL(fileLine);
-			userPosition.setAll(gll.getLatitudeDirection(), gll.getLatitudeNumber(), gll.getLongitudeDirection(),
-					gll.getLongitudeNumber());
+			userPosition.setAll(gll.getLatitudeNumber(), gll.getLatitudeDirection(), gll.getLongitudeNumber(),
+					gll.getLongitudeDirection());
 
 			System.out.println(userPosition.toString());
 			break;

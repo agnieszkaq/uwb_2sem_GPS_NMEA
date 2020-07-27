@@ -62,7 +62,7 @@ public class UserPosition {
 		this.longitudeDirection = longitudeDirection;
 	}
 
-	public void setAll(String atitudeNumber, String latitudeDirection, String longitudeNumber,
+	public void setAll(String latitudeNumber, String latitudeDirection, String longitudeNumber,
 			String longitudeDirection) {
 		this.latitudeNumber = latitudeNumber;
 		this.latitudeDirection = latitudeDirection;
